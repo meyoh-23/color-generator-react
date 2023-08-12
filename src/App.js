@@ -6,7 +6,7 @@ import Values from 'values.js'
 function App() {
   const [color, setColor] = useState('');
   const[error, setError] = useState(false);
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(new Values('#000019').all(10));
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +16,7 @@ function App() {
     } catch (error) {
       setError(true);
       alert('The color code you entered is not valid');
-      console.log(error);
+      //console.log(error);
     }
   }
 
@@ -37,7 +37,6 @@ function App() {
     <section className='colors'>
       {
         list.map((color, index) => {
-          console.log(color);
         return( 
           <SingleColor key={index} {...color} index={index} />
         )
