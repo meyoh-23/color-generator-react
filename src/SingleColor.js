@@ -8,6 +8,14 @@ const SingleColor = ({rgb, weight, index}) => {
   //generating the hexadecimal equivalent of the colors
   const hexColor = rgbToHex(...rgb);
 
+  // timeout to clear the 'copied to clipboad notification'
+  useEffect(()=>{
+    const timeOut = setTimeout(() => {
+      setAlert(false)
+    }, 3000)
+    return () => clearTimeout(timeOut);
+  }, [alert])
+
   return ( 
     <article className={`color ${index > 10 && 'color-light'}`}
     style={{backgroundColor: `rgb(${bcg})`}}
