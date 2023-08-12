@@ -8,10 +8,16 @@ function App() {
   const[error, setError] = useState(false);
   const [list, setList] = useState([]);
 
-  // handling the form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('hello form');
+    try {
+    let colors = new Values(color).all(10);
+    console.log(colors);
+    } catch (error) {
+      setError(true);
+      alert('The color code you entered is not valid');
+      console.log(error);
+    }
   }
 
   return ( 
@@ -22,7 +28,8 @@ function App() {
         <input type='text'
         value={color}
         onChange={(e) => setColor(e.target.value)} 
-        placeholder='#15025'
+        placeholder='#f15025'
+        className={`${error? 'error' : null}`}
         />
         <button className='btn' type='submit'>submit</button>
       </form>
