@@ -5,10 +5,13 @@ const SingleColor = ({rgb, weight, index}) => {
   const [alert, setAlert] = useState(false);
   const bcg = rgb.join(','); //rgb color-codes
 
+  //generating the hexadecimal equivalent of the colors
+  const hexColor = rgbToHex(...rgb);
+
   return ( 
     <article className={`color`} style={{backgroundColor: `rgb(${bcg})`}}>
       <p className='percent-value'>{weight}%</p>
-      <p className='color-value'></p>
+      <p className='color-value'>{hexColor}</p>
     </article>
   )
 }
